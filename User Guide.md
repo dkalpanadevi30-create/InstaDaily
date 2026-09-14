@@ -1,14 +1,6 @@
-import urllib.request
-import json
-import base64
 
 
-REPO_OWNER = 'gunjanjain-pixel'
-REPO_NAME = 'InstaDaily'
-FILE_PATH = 'InstaDaily-User-Guide.md'
-COMMIT_MESSAGE = 'Add InstaDaily user guide'
 
-guide_content = """# InstaDaily Guide
 ## How to Use
 A quick-commerce app where a cart can be shared across devices, and the app works out who owes what.
 
@@ -37,48 +29,6 @@ Two ways to pay:
 * Everyone pays their own share, and the order goes through once all shares are in.
 
 ### Step 8 Track, receive, settle up
-Everyone in the cart gets the live tracking screen rider name, number, map. When the order arrives, check the items against the list."""
+Everyone in the cart gets the live tracking screen rider name, number, map. When the order arrives, check the items against the list.
 
 
-encoded_content = base64.b64encode(guide_content.encode('utf-8')).decode('utf-8')
-
-
-url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents/{FILE_PATH}"
-headers = {
-    "Authorization": f"Bearer {GITHUB_TOKEN}",
-    "Accept": "application/vnd.github.v3+json",
-    "User-Agent": "Python-urllib"
-}
-
-
-sha = None
-try:
-    req_check = urllib.request.Request(url, headers=headers, method='GET')
-    with urllib.request.urlopen(req_check) as response:
-        if response.status == 200:
-            resp_data = json.loads(response.read().decode('utf-8'))
-            sha = resp_data.get('sha')
-except urllib.error.HTTPError as e:
-    if e.code != 404:  # 404 just means file doesn't exist yet, which is fine
-        print(f"Error checking file status: {e.code}")
-
-
-data = {
-    "message": COMMIT_MESSAGE,
-    "content": encoded_content
-}
-if sha:
-    data["sha"] = sha
-
-json_data = json.dumps(data).encode('utf-8')
-
-try:
-    req_put = urllib.request.Request(url, data=json_data, headers=headers, method='PUT')
-    with urllib.request.urlopen(req_put) as response:
-        if response.status in [200, 201]:
-            print(f"Success! '{FILE_PATH}' is now live on GitHub with a readable preview.")
-except urllib.error.HTTPError as e:
-    print(f"HTTP Error {e.code}:")
-    print(e.read().decode('utf-8'))
-except Exception as e:
-    print(f"Error: {e}")
