@@ -1,0 +1,26 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "InstaDaily",
+    "Aashirvaad",
+    "Tailwind",
+    "tailwindcss",
+    "forwardRef",
+    "viewBox",
+    "strokeWidth",
+    "currentColor",
+    "supabase",
+    "Supabase",
+    "cspell",
+    "react",
+    "reactjs",
+    "Amul"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    "build",
+    ".next"
+  ]
+}
