@@ -29,6 +29,6 @@ Two ways to pay:
 * Everyone pays their own share, and the order goes through once all shares are in.
 
 ### Step 8 Track, receive, settle up
-Everyone in the cart gets the live tracking screen rider name, number, map. When the order arrives, check the items against the list."""
+Everyone in the cart gets the live tracking screen rider name, number, map. When the order arrives, check the items against the list.
 
 
