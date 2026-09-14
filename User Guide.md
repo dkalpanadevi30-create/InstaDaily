@@ -1,12 +1,4 @@
-import urllib.request
-import json
-import base64
 
-
-REPO_OWNER = 'gunjanjain-pixel'
-REPO_NAME = 'InstaDaily'
-FILE_PATH = 'InstaDaily-User-Guide.md'
-COMMIT_MESSAGE = 'Add InstaDaily user guide'
 
 guide_content = """# InstaDaily Guide
 ## How to Use
